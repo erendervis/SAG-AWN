@@ -47,10 +47,23 @@ Compared to the original AWN implementation, we introduced the following improve
 
 ---
 
+## Our Modifications vs Baseline
+
+| Component | Original AWN | SAG-AWN |
+|---|---|---|
+| Input | I/Q samples | I/Q samples + SNR |
+| Feature extraction | Adaptive wavelet features | Adaptive wavelet features |
+| SNR usage | Not used | Used for feature gating |
+| Added module | None | Two-layer SAG MLP |
+| Training | Baseline AWN training | Differential learning rates |
+| Evaluation | Overall accuracy | Overall accuracy, per-SNR analysis, ablation study |
+
+---
+
 ## Results
 
 | Model | Accuracy |
-|---|---|
+|---|---:|
 | AWN Baseline | 64.24% |
 | SAG-AWN (Ours) | 69.00% |
 
@@ -79,7 +92,7 @@ The largest improvements are observed in the low-to-mid SNR transition region be
 ## Ablation Study
 
 | Configuration | Accuracy |
-|---|---|
+|---|---:|
 | AWN Baseline | 64.24% |
 | SAG-AWN (constant zero-SNR) | 26.05% |
 | SAG-AWN (noisy SNR ±5%) | 67.46% |
@@ -99,6 +112,8 @@ Dataset download:
 
 https://www.deepsig.ai/datasets
 
+The dataset is not included in this repository due to file size limitations. After downloading, place the dataset file inside the `data/` directory.
+
 ---
 
 ## Installation
@@ -111,11 +126,15 @@ pip install -r requirements.txt
 
 ## Running the Project
 
-Main notebook:
+Open `MYZ307E_AWN_SAG_Final.ipynb` in Google Colab and run the cells sequentially.
 
-```bash
-MYZ307E_AWN_SAG_Final.ipynb
-```
+Main stages:
+
+1. Install requirements
+2. Load RadioML2016.10a dataset
+3. Reproduce AWN baseline
+4. Train/evaluate SAG-AWN
+5. Generate visualizations and ablation results
 
 ---
 
