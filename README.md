@@ -1,4 +1,5 @@
 # SNR-Adaptive Gating for Automatic Modulation Classification
+> Final Accuracy Improvement: **64.24% → 69.00% (+4.76%)**
 
 This project extends the Adaptive Wavelet Network (AWN) architecture for Automatic Modulation Classification (AMC) by introducing a lightweight SNR-Adaptive Gating (SAG) module.
 
